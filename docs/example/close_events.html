@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../../notifyNote.css">
+		<script src="../../jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="../../notifyNote.jquery.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('button').click(function(){
+					if(typeof notifyNote!='undefined' && notifyNote!=null){
+						notifyNote.destroy() // if notificationBar already exists destroy it
+					}
+					$('body').notifyNote({
+						'mouseDrag': $('button.mouseDrag#enable').hasClass('active'), //enables hiding notification by dragging it
+						'hideOnClick': $('button.hideOnClick#enable').hasClass('active') //enables hiding notification by clicking on it
+					}) //init new notificationBar with user params
+					notifyNote.notification('error', 'Error text here', 'error_id') //initates new notification to drag or click
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="control">
+			<h2>MouseDrag</h2>
+				<button id="enable" class="mouseDrag" onclick="$('.mouseDrag#enable').addClass('active');$('.hideOnClick#enable').removeClass('active')">Enable</button>
+			<h2>hideOnClick</h2>
+				<button id="enable" class="hideOnClick" onclick="$('.hideOnClick#enable').addClass('active');$('.mouseDrag#enable').removeClass('active')">Enable</button>
+		</div>
+	</body>
+</html>

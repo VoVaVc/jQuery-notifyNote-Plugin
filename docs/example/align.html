@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../../notifyNote.css">
+		<script src="../../jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="../../notifyNote.jquery.js" type="text/javascript"></script>
+		<style type="text/css">
+			/* Page styling */
+			button{display: block; position: absolute;}
+			.control
+			{
+				position: absolute;
+				top: 40%;
+				left: 45%;
+			}
+			#left
+			{
+				margin: 2em 0 0 -4em;
+			}
+			#right
+			{
+				margin: 2em 0 0 4em;
+			}
+			#top
+			{
+				margin: -1em 0 0 0;
+			}
+			#bottom
+			{
+				margin: 5em 0 0 -0.5em;
+			}
+			h2
+			{
+				margin: -3em 0 0 -7em;
+				padding: 0 0 1em;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('button').click(function(){
+					if(typeof notifyNote!='undefined' && notifyNote!=null){
+						notifyNote.destroy() // if notificationBar already exists destroy it
+					}
+					//get clicked buttons to align notificationBar, property is id of the button
+					switch($(this).attr('id')){
+						case 'top':
+							$('button#top').addClass('active')
+							$('button#bottom').removeClass('active')
+							break;
+						case 'bottom':
+							$('button#bottom').addClass('active')
+							$('button#top').removeClass('active')
+							break;
+						case 'left':
+							$('button#left').addClass('active')
+							$('button#right').removeClass('active')
+							break;
+						case 'right':
+							$('button#right').addClass('active')
+							$('button#left').removeClass('active')
+							break;
+						default:
+							break
+					}
+					$('body').notifyNote({
+						'horizontal': $('button.horizontal.active').attr('id'), //aligns element horizontaly
+						'vertical': $('button.vertical.active').attr('id') //aligns element verticaly
+					}) //init new notificationBar with user params
+					notifyNote.notification('error', 'Error text here', 'error_id') //initates new notification to show place where notificationBar was aligned
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="control">
+			<h2>Use buttons to place notificationBar</h2>
+			<button id="left" class="horizontal">Left</button>
+			<button id="right" class="active horizontal">Right</button>
+			<button id="top" class="active vertical">Top</button>
+			<button id="bottom" class="vertical">Bottom</button>
+		</div>
+	</body>
+</html>

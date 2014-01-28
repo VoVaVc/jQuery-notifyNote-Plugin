@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../../notifyNote.css">
+		<script src="../../jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="../../notifyNote.jquery.js" type="text/javascript"></script>
+		<style type="text/css">
+			/* Page styling */
+			button
+			{
+				display: block; 
+				margin: 7px 10px;
+				width: 153px;
+				height: 35px;
+			}
+			input
+			{
+				display: block;
+				margin: 7px 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('button').click(function(){
+					if(typeof notifyNote!='undefined' && notifyNote!=null){
+						notifyNote.destroy() // if notificationBar already exists destroy it
+					}					
+					$('body').notifyNote({
+						'width': $('#width').val(),
+						'max-height': $('#maxheight').val(),
+						'z-index': $('#zindex').val(),
+						'margin': $('#margin').val(),
+					}) //init new notificationBar with custom css
+					notifyNote.notification('error', 'See your styles', 'error_id') //initates new notification
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="control">
+			<h2>Input your styles, then click run button to see result</h2>
+			<input id="width" type="text" placeholder="width" val="250px">
+			<input id="maxheight" type="text" placeholder="max-height" val="100px">
+			<input id="zindex" type="text" placeholder="z-index" val="999">
+			<input id="margin" type="text" placeholder="margin" val="0">
+			<button>Run</button>
+		</div>
+	</body>
+</html>

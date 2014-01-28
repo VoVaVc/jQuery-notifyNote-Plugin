@@ -1,0 +1,306 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../notifyNote.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="highlight.js/styles/pojoaque.css">
+		<script src="../jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="../notifyNote.jquery.js" type="text/javascript"></script>
+		<script src="highlight.js/highlight.pack.js"type="text/javascript"></script>
+		<script src="main.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<ol class="menuBar">
+			<li data-page="installing">Installing</li>
+			<li data-page="settings">Settings</li>
+			<li data-page="events">Events</li>
+			<li data-page="methods">Methods</li>
+			<li data-page="customization">Customization</li>
+			<li class="info">jQuery notifyNote plugin ver. 1.0.1</li>
+		</ol>
+		
+		<section class="installing show">
+			<h1>Installing the plugin</h1>
+			<p>To install the plugin you need three files.</p>
+			<ol>
+				<li>jQuery.js - the library itself</li>
+				<li>notifyNote.jquery.js - main plugin script</li>
+				<li>notifyNote.css - customizable styles for plugin</li>
+			</ol>
+			<p>example: <br>&nbsp;</p>
+			<code class="html">
+				&lt;link rel="stylesheet" type="text/css" href="notifyNote.css"&gt;<br>
+				&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+				&lt;script src="jquery.notifyNote.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+			</code>
+			<p><br>&nbsp;insert this to your &lt;head&gt; and locate files in same directory or specify path to them<br>&nbsp;</p>
+			<p>Before using the plugin you need to initate it like this:<br>&nbsp;</p>
+			<code class="javascript">
+				$('body').notifyNote()
+			</code>
+			<p><br>&nbsp;$('body') can be any element you want to add notifyNote<br>&nbsp;</p>
+			<p>to apply some options to plugin you need the following construction<br>&nbsp;</p>
+			<code class="javascript">
+				$('body').notifyNote({<br>
+					&nbsp;&nbsp;&nbsp;debug: true,<br>
+					&nbsp;&nbsp;&nbsp;option1: value,<br>
+					&nbsp;&nbsp;&nbsp;option2: value<br>
+				})
+			</code>
+			<p><br>&nbsp;list options like this and you are ready to go further</p>
+		</section>
+		
+		<section class="settings">
+			<ul>
+				<li>
+					<h2>debug</h2>
+					<span>Default: false</span>
+					<p>Enables error logging.</p>
+				</li>
+				<li>
+					<h2>horizontal</h2>
+					<span>Default: right</span>
+					<p>Specifies a place for notification bar by horizontal. Possible values:</p>
+					<ol>
+						<li>left</li>
+						<li>right</li>
+					</ol>
+				</li>
+				<li>
+					<h2>vertical</h2>
+					<span>Default: top</span>
+					<p>Specifies a place for notification bar by vertical. Possible values:</p>
+					<ol>
+						<li>top</li>
+						<li>bottom</li>
+					</ol>
+				</li>
+				
+				<li>
+					<h2>id</h2>
+					<span>Default: notificationBar</span>
+					<p>Allows to use a custom id for notificationBar.</p>
+				</li>
+				
+				<li>
+					<h2>width</h2>
+					<span>Default: 250px</span>
+					<p>Specifies width for notifications.</p>
+				</li>
+				
+				<li>
+					<h2>max-height</h2>
+					<span>Default: 100px</span>
+					<p>Specifies max-height for notifications.</p>
+				</li>
+				
+				<li>
+					<h2>z-index</h2>
+					<span>Default: 999</span>
+					<p>Specifies z-index for notificationBar.</p>
+				</li>
+				
+				<li>
+					<h2>margin</h2>
+					<span>Default: 0</span>
+					<p>Specifies margin for notificationBar.</p>
+				</li>
+				
+				<li>
+					<h2>prefix</h2>
+					<span>Default: notification_</span>
+					<p>Specifies custom id prefix for notifications.</p>
+				</li>
+				
+				<li>
+					<h2>mouseDrag</h2>
+					<span>Default: true</span>
+					<p>Enables closing notifications by dragging them from it's position to the opposite side. Possible values:</p>
+					<ol>
+						<li>true</li>
+						<li>false</li>
+					</ol>
+				</li>
+				
+				<li>
+					<h2>hideOnClick</h2>
+					<span>Default: true</span>
+					<p>Enables closing notifications by clicking on them. Possible values:</p>
+					<ol>
+						<li>true</li>
+						<li>false</li>
+					</ol>
+				</li>
+				<li>
+					<h2>closeButton</h2>
+					<span>Default: false</span>
+					<p>Shows small close button in the right corner of notification.</p>
+				</li>
+				<li>
+					<h2>replaceOnMatch</h2>
+					<span>Default: true</span>
+					<p>If notification with same id already exists new notification will override old one.</p>
+					<ol>
+						<li>left</li>
+						<li>right</li>
+					</ol>
+				</li>
+			</ul>
+		</section>
+		<section class="events">
+			<ul>
+				<li>
+					<h2>beforeShow</h2>
+					<p>Event fires when notification is created, but not shown yet</p>
+				</li>
+				<li>
+					<h2>afterShow</h2>
+					<p>Event fires right after notification is showed</p>
+				</li>
+				<li>
+					<h2>afterShow</h2>
+					<p>Event fires right after notification is showed</p>
+				</li>
+				<li>
+					<h2>beforeHide</h2>
+					<p>Event fires before notification hide</p>
+				</li>
+				<li>
+					<h2>afterHide</h2>
+					<p>Event fires right after notification is hidden</p>
+				</li>
+				<li>
+					<h2>beforeHideAll</h2>
+					<p>Event fires before all notifications hides</p>
+				</li>
+				<li>
+					<h2>afterHideAll</h2>
+					<p>Event fires right after all notifications is hidden</p>
+				</li>
+				<li>
+					<h2>textAdd</h2>
+					<p>Event fires after text added to notification</p>
+				</li>
+				<li>
+					<h2>textReplace</h2>
+					<p>Event fires after notification text replaced</p>
+				</li>
+				<li>
+					<h2>beforeDestroy</h2>
+					<p>Event fires before notificationBar destroys</p>
+				</li>
+			</ul>
+		</section>
+		<section class="methods">
+			<ul>
+				<li>
+					<h2>notification(type, html, id)</h2>
+					<p>Simply shows notification.</p>
+					<ol>
+						<li>type - Type of notification. Default included: error, warning, info, darkGrey, lightGrey</li>
+						<li>html - html content for notification, it can be anything from colored text to video frame</li>
+						<li>id - notification id</li>
+					</ol>
+					<p>
+						<code class="javascript">
+							notifyNote.notification('error', 'I am notification!', 'test')
+						</code>
+					</p>
+					<button onclick="notifyNote.notification('error', 'I am notification!', 'test')">Try it out</button>
+				</li>
+				<li>
+					<h2>hideNotification(type, text, id)</h2>
+					<p>Hides already added notification.</p>
+					<ol>
+						<li>id - notification id</li>
+					</ol>
+					<p>
+						<code class="javascript">
+							notifyNote.notification('info', 'I gonna be hidden in 5 sec', 'hideMe')<br>
+							setTimeout(function(){<br>
+							&nbsp;&nbsp;&nbsp;notifyNote.hideNotification('hideMe')<br>
+							}, 5000)<br>
+						</code>
+					</p>
+					<button onclick="notifyNote.notification('info', 'I gonna be hidden in 5 sec', 'hideMe');setTimeout(function(){notifyNote.hideNotification('hideMe')}, 5000)">Try it out</button>
+				</li>
+				<li>
+					<h2>hideNotifications()</h2>
+					<p>Hides all displayed notifications.</p>
+					<p>&nbsp;</p>
+					<p>
+						<code class="javascript">
+							notifyNote.notification('info', 'I gonna be hidden in 5 sec', 'hideMeAll')<br>
+							notifyNote.notification('warning', 'I gonna be hidden in 5 sec too', 'hideMeAll1')<br>
+							notifyNote.notification('darkGrey', 'Hide me hide me', 'hideMeAll2')<br>
+							notifyNote.notification('error', 'Not shure I have to say something', 'hideMeAll3')<br>
+							setTimeout(function(){<br>
+							&nbsp;&nbsp;&nbsp;notifyNote.hideNotifications()<br>
+							}, 5000)<br>
+						</code>
+					</p>
+					<button onclick="notifyNote.notification('info', 'I gonna be hidden in 5 sec', 'hideMeAll');notifyNote.notification('warning', 'I gonna be hidden in 5 sec too', 'hideMeAll1');notifyNote.notification('darkGrey', 'Hide me hide me', 'hideMeAll2');notifyNote.notification('error', 'Not shure I have to say something', 'hideMeAll3');setTimeout(function(){notifyNote.hideNotifications()}, 5000)">Try it out</button>
+				</li>
+				<li>
+					<h2>addTextNotification(html, id)</h2>
+					<p>Adds html to specified notification.</p>
+					<ol>
+						<li>html - hrtml to append to notification</li>
+						<li>id - notification id</li>
+					</ol>
+					<p>
+						<code class="javascript">
+							notifyNote.notification('warning', 'My text will be extended in 2 sec', 'addText')<br>
+							setTimeout(function(){<br>
+							&nbsp;&nbsp;&nbsp;notifyNote.addTextNotification('supertext', 'addText')<br>
+							}, 2000)<br>
+						</code>
+					</p>
+					<button onclick="notifyNote.notification('warning', 'My text will be extended in 2 sec', 'addText');setTimeout(function(){notifyNote.addTextNotification('supertext', 'addText')}, 2000)">Try it out</button>
+				</li>
+				<li>
+					<h2>replaceTextNotification(text, id)</h2>
+					<p>Replaces html in specified notification.</p>
+					<ol>
+						<li>html - html to replace current notification html</li>
+						<li>id - notification id</li>
+					</ol>
+					<p>
+						<code class="javascript">
+							notifyNote.notification('warning', 'My text will be replaced in 2 sec', 'replaceText')<br>
+							setTimeout(function(){<br>
+							&nbsp;&nbsp;&nbsp;notifyNote.replaceTextNotification('I am replaced', 'replaceText')<br>
+							}, 2000)<br>
+						</code>
+					</p>
+					<button onclick="notifyNote.notification('warning', 'My text will be replaced in 2 sec', 'replaceText');setTimeout(function(){notifyNote.replaceTextNotification('I am replaced', 'replaceText')}, 2000)">Try it out</button>
+				</li>
+				<li>
+					<h2>destroy()</h2>
+					<p>Destroys plugin and all notifications.</p>
+					<p>
+						<code class="javascript">
+							notifyNote.notification('error', 'The end is close', 'destroy')<br>
+							setTimeout(function(){<br>
+							&nbsp;&nbsp;&nbsp;notifyNote.destroy()<br>
+							}, 2000)<br>
+						</code>
+					</p>
+					<button onclick="notifyNote.notification('error', 'The end is close', 'destroy');setTimeout(function(){notifyNote.destroy();$('body').notifyNote()}, 2000)">Try it out</button>
+				</li>
+			</ul>
+		</section>
+		<section class="customization">
+			<ul>
+				<li>
+					<h2>Adding new notification types</h2>
+					<p>Creating your own notification style provided in 3 easy steps</p>
+					<ol>
+						<li>Write your css - add your style to notifyNote.css with class .notification.yourClass</li>
+						<li>Call your notification - use your class name as type. example: <code style="margin: 15px -2px;" class="javascript">notifyNote.notification('yourClass', 'New very own notification', 'own')</code></li>
+						<li>There is no step 3.</li>
+					</ol>
+				</li>
+			</ul>
+		</section>
+	</body>
+</html>

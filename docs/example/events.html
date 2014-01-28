@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../../notifyNote.css">
+		<script src="../../jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="../../notifyNote.jquery.js" type="text/javascript"></script>
+		<style type="text/css">
+			.control
+			{
+				display: inline-block;
+				float: left;
+			}
+			button
+			{
+				display: block;
+				width: 50%;
+				height: 30px;
+				margin: 6px 0;
+			}
+			ol
+			{
+				display: inline-block;
+				float: left;
+				padding: 0 60px;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				init()
+				$('button').click(function(){
+					switch($(this).attr('id')){
+						case 'init':
+							init()
+							break;
+						case 'showWarning':
+							notifyNote.notification('warning', 'Warning text here', 'warning_id')
+							break;
+						case 'replace':
+							notifyNote.replaceTextNotification('text replaced', 'warning_id')
+							break;
+						case 'add': 
+							notifyNote.addTextNotification('some text added', 'warning_id')
+							break;
+						case 'hideWarning':
+							notifyNote.hideNotification('warning_id')
+							break;
+						case 'hideAll':
+							notifyNote.hideNotifications()
+							break;
+						case 'destroy':
+							notifyNote.destroy()
+							break;
+						default:
+							break
+					}
+				})
+
+				function init(){
+					$('body').notifyNote({
+						'beforeShow': function(){
+							log('beforeShow fired')
+							console.log('beforeShow arguments: ', arguments)
+						},
+						'afterShow': function(){
+							log('afterShow fired')
+							console.log('afterShow arguments: ', arguments)
+						},
+						'beforeHide': function(){
+							log('beforeHide fired')
+							console.log('beforeHide arguments: ', arguments)
+						},
+						'afterHide': function(){
+							log('afterHide fired')
+							console.log('afterHide arguments: ', arguments)
+						},
+						'beforeHideAll': function(){
+							log('beforeHideAll fired')
+							console.log('beforeHideAll arguments: ', arguments)
+						},
+						'afterHideAll': function(){
+							log('afterHideAll fired')
+							console.log('afterHideAll arguments: ', arguments)
+						},
+						'textAdd': function(){
+							log('textAdd fired')
+							console.log('textAdd arguments: ', arguments)
+						},
+						'textReplace': function(){
+							log('textReplace fired')
+							console.log('textReplace arguments: ', arguments)
+						},
+						'beforeDestroy': function(){
+							log('beforeDestroy fired')
+							console.log('beforeDestroy arguments: ', arguments)
+						}
+					}) //plugin inizializtion
+				}
+
+				function log(text){
+					$('.log').append('<li>'+text+'</li>')
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<div class="control">
+			<h2>Try different methods to see events</h2>
+			<button id="showWarning">Show notification</button>
+			<button id="replace">Replace text</button>
+			<button id="add">Add text</button>
+			<button id="hideWarning">Hide notification</button>
+			<button id="hideAll">Hide all notifications</button>
+			<button id="init">Init</button>
+			<button id="destroy">Destroy</button>
+		</div>
+		<ol class="log"></ol>
+	</body>
+</html>
